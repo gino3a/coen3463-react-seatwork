@@ -61,7 +61,7 @@ class GroceryList extends Component {
     clearListButton = <button className='clear-list' onClick={this.clearList}>Clear the List</button>;
 
     return (
-      <div>
+      <div style={{textAlign: 'left'}}>
         <ul>
           {groceriesComponents}
         </ul>

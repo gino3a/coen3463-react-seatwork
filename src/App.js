@@ -5,6 +5,14 @@ import Greeting from './Greeting.js';
 import GroceryList from './GroceryList.js';
 
 class App extends Component {
+  state = {
+    name: ''
+  }
+  onNameChange = (event) => {
+    this.setState({
+      name: event.target.value
+    });
+  }
   render() {
     return (
       <div className="App">
@@ -13,7 +21,8 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          <Greeting name='World' />
+          <Greeting name={this.state.name} />
+          <input type='text' onChange={this.onNameChange} />
           <GroceryList />
         </p>
       </div>
