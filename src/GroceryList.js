@@ -16,7 +16,8 @@ class GroceryList extends Component {
           completed: true
         }
       ],
-      newGroceryName: ""
+      newGroceryName: "",
+      completedCount: 1,
     };
 
     this.addGroceryItem = this.addGroceryItem.bind(this);
@@ -49,6 +50,7 @@ class GroceryList extends Component {
     groceries[groceryIndex].completed = !groceries[groceryIndex].completed;
     this.setState({
       groceries: groceries,
+      completedCount: groceries[groceryIndex].completed ? this.state.completedCount + 1 : this.state.completedCount - 1
     })
   }
 
@@ -69,10 +71,10 @@ class GroceryList extends Component {
     newProductInput = <input className='new-item' type="text" onChange={this.inputChanged}/>;
     newProductAddButton = <button className='add-product' onClick={this.addGroceryItem}>Add new Product</button>;
     clearListButton = <button className='clear-list' onClick={this.clearList}>Clear the List</button>;
-
+    let title = `My Grocery List (${this.state.completedCount}/${this.state.groceries.length})`
     return (
       <div className='grocery-list'>
-        <h3> My Grocery List </h3>
+        <h3> {title} </h3>
         <div>
           {newProductInput}
           {newProductAddButton}
