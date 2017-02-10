@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GroceryItem from './GroceryItem';
+import './index.css';
 
 class GroceryList extends Component {
   constructor(props) {
@@ -9,6 +10,10 @@ class GroceryList extends Component {
         {
           name: "Apples",
           completed: false
+        },
+        {
+          name: "Patis",
+          completed: true
         }
       ],
       newGroceryName: ""
@@ -40,6 +45,11 @@ class GroceryList extends Component {
   // Hint 1: Pay attention to the element's index on the list.
   toggleGroceryCompleteness(groceryIndex) {
     // Put your code here
+    let groceries = this.state.groceries;
+    groceries[groceryIndex].completed = !groceries[groceryIndex].completed;
+    this.setState({
+      groceries: groceries,
+    })
   }
 
   render() {
@@ -61,13 +71,18 @@ class GroceryList extends Component {
     clearListButton = <button className='clear-list' onClick={this.clearList}>Clear the List</button>;
 
     return (
-      <div style={{textAlign: 'left'}}>
+      <div className='grocery-list'>
+        <h3> My Grocery List </h3>
+        <div>
+          {newProductInput}
+          {newProductAddButton}
+        </div>
         <ul>
           {groceriesComponents}
         </ul>
-        {newProductInput}
-        {newProductAddButton}
-        {clearListButton}
+        <div>
+          {clearListButton}
+        </div>
       </div>
     );
   }

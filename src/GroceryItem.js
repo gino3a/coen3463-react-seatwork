@@ -9,6 +9,7 @@ class GroceryItem extends React.Component {
     let completed = this.props.grocery.completed ? "completed" : '';
     return (
       <li className={completed} onClick={this.props.onComplete}>
+        <input type='checkbox' checked={this.props.grocery.completed}/>
         {this.props.grocery.name}
       </li>
     );
