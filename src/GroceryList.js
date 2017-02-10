@@ -39,7 +39,7 @@ class GroceryList extends Component {
   }
 
   clearList(event) {
-    this.setState({groceries: []});
+    this.setState({groceries: [], completedCount: 0});
   }
 
   // Fill the definition of the following method to allow completing each item
